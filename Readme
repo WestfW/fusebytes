@@ -1,0 +1,45 @@
+fusebytes.pde
+Copyright 2010, 2011 by Bill Westfield ("WestfW")
+Open Source Software, made available under the terms of the "MIT OSSW license"
+
+fusebytes is an Arduino sketch that prints out internal information about
+the chip it is run on.  It should compile and run on ATmega8, Mega168,
+mega328, and mega328p Atmel AVR chips.  It may compile and show partial
+information on other chips (mega88, mega1280, etc.)
+
+
+For example:
+
+Compiled for ATmega328P
+No Serial Number
+
+Fuse bits (L/H/E): FF DE FD
+Lock bits:         EF
+Signature:         1E 95 F (ATmega328P)
+Oscal:             9A
+
+Fuse Low = 11111111 (FF)
+           ||||++++______Low Power Crystal 8 - 16MHz
+           ||++__________Start Up Time=11
+           |+____________Clock Output Disabled
+           +_____________(no divide)
+
+Fuse High = 11011110 (DE)
+            |||||||+______Reset to Bootstrap
+            |||||++_______256 words (512 bytes)
+            ||||+_________EEPROM Erased on chip erase
+            |||+__________Watchdog programmable
+            ||+___________ISP programming enabled
+            |+____________DebugWire off
+            +_____________RST enabled
+
+Fuse Extended = 11111101 (FD)
+                |||||+++______Brownout at 2.7V
+
+Lock Bits = 11101111 (EF)
+            ||||||++______Read/Write to everywhere
+            ||||++________R/W Application
+            ||++__________No Write to Boot Section
+
+Bootloader at 0x7E00 looks like version 4.4
+ 2411 B784 BE14 FF81 D0F0 E085 9380 81
